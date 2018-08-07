@@ -1,0 +1,9 @@
+.temp
+/configs
+/dist
+/node_modules 
+/platforms
+/plugins
+/test
+/web
+
