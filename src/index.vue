@@ -12,9 +12,6 @@
 </template>
 
 <script>
-
-var websocket = weex.requireModule('webSocket');
-var count = 0;
 export default {
   methods:{
     hello:function(){

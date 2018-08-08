@@ -1,49 +1,58 @@
 <template>
-    <div class="wrapper">
-        <text class="b message" @click="get">获取</text>
-        <text class="message">{{json}}</text>
+  <scroller>
+    <div class="group">
+      <text class="title">method = GET</text>
+      <text class="count">{{getResult}}</text>
     </div>
+  </scroller>
 </template>
+
 <script>
-var stream = weex.requireModule('stream');
-export default {
-    data () {
-    return {
-      logo: 'https://gw.alicdn.com/tfs/TB1yopEdgoQMeJjy1XaXXcSsFXa-640-302.png',
-      json:''
+  var stream = weex.requireModule('stream');
+  module.exports = {
+    data: function () {
+      return {
+        getResult: 'loading...',
+      }
+    },
+    created: function() {
+      var me = this;
+      var GET_URL = 'http://httpbin.org/get';
+
+      stream.fetch({
+        method: 'GET',
+        url: GET_URL,
+        type:'json'
+      }, function(ret) {
+        if(!ret.ok){
+          me.getResult = "request failed";
+        }else{
+          console.log('get:'+ret);
+          me.getResult = ret.data.origin;
+        }
+      },function(response){
+        console.log('get in progress:'+response.length);
+        me.getResult = "bytes received:"+response.length;
+      });
+
     }
-  },
-  methods:{
-    get:function(){
-        self.json="123";
-        stream.fetch({
-            method: 'GET',
-            url: 'https://api.douban.com/v2/book/1220562',
-            type:'json'
-        }, function(ret) {
-            if(!ret.ok){
-            self.json = "request failed";
-            }else{
-            console.log('get:'+ret);
-            self.json = JSON.stringify(ret.data);
-            }
-        },function(response){
-            console.log('get in progress:'+response.length);
-        });
-    }
-  }
-}
+  };
 </script>
+
 <style scoped>
-  .message {
-    margin: 30px;
-    font-size: 32px;
-    color: #7272721e;
+  .group {
+    margin-left:32px;
+    margin-right:32px;
+    margin-bottom:32px;
   }
-  .b {
-    border-width: 1px;
-    border-color: red;
-    border-bottom-style: solid;
+  .title {
+    font-size: 45px;
+    color: #41B883;
+  }
+  .count {
+    margin-top:6px;
+    font-size: 28px;
+    color: #888888;
   }
 </style>
 
