@@ -5,7 +5,7 @@
     <div class="navigation b">
       <text class="il b" to="/Hello" @click="hello">Hello</text>
       <text class="il b" to="/Chat" @click="chat">Chat</text>
-      <text class="il b" to="/Hello" @click="douBan">DouBan</text>
+      <text class="il b" to="/Hello" @click="hello">Hello</text>
       <text class="il b" to="/Chat" @click="chat">Chat</text>
     </div>
   </div>
@@ -22,9 +22,6 @@ export default {
     },
     chat(){
       this.$router.push('/Chat')
-    },
-    douBan(){
-      this.$router.push('/Douban')
     }
   },
   name: 'App',

@@ -12,7 +12,7 @@ var websocket = weex.requireModule('webSocket');
 var count = 0;
 export default {
   methods:{
-    connect() {
+    connect:function() {
         websocket.WebSocket('ws://127.0.0.1:8080/webSocket','');
         var self = this;
         self.onopeninfo = 'connecting...'
@@ -48,7 +48,7 @@ export default {
   .message {
     margin: 30px;
     font-size: 32px;
-    color: #7272721e;
+    color: #727272;
   }
   .chatFrame {
     height: 750px;
