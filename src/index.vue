@@ -3,10 +3,10 @@
     <image :src="logo" class="logo b" />
     <router-view/>
     <div class="navigation b">
-      <text class="il b" to="/Hello" @click="hello">Hello</text>
-      <text class="il b" to="/Chat" @click="chat">Chat</text>
-      <text class="il b" to="/Hello" @click="douBan">DouBan</text>
-      <text class="il b" to="/Chat" @click="chat">Chat</text>
+      <text class="il b" @click="hello">Hello</text>
+      <text class="il b" @click="chat">Chat</text>
+      <text class="il b" @click="douBan">DouBan</text>
+      <text class="il b" @click="chat">Chat</text>
     </div>
   </div>
 </template>
@@ -69,7 +69,6 @@ export default {
     border-bottom-style: solid;
   }
   .il {
-    display: inline;
     height: 100px;
     width:187.5px;
     font-size:32px;

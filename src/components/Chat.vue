@@ -13,7 +13,7 @@ var count = 0;
 export default {
   methods:{
     connect:function() {
-        websocket.WebSocket('ws://127.0.0.1:8080/webSocket','');
+        websocket.WebSocket('ws://154.8.194.120:8080/webSocket','');
         var self = this;
         self.onopeninfo = 'connecting...'
         websocket.onopen = function(e)

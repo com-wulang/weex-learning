@@ -1,6 +1,6 @@
 <template>
     <div class="wrapper">
-        <image :src="logo" class="logo b" @click="get"/>
+        <text class="b message" @click="get">获取</text>
         <text class="message">{{json}}</text>
     </div>
 </template>
