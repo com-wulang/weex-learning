@@ -14,7 +14,7 @@ export default {
     }
   },
   methods:{
-    get(){
+    get:function(){
         self.json="123";
         stream.fetch({
             method: 'GET',

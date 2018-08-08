@@ -17,13 +17,13 @@ var websocket = weex.requireModule('webSocket');
 var count = 0;
 export default {
   methods:{
-    hello(){
+    hello:function(){
       this.$router.push('/Hello')
     },
-    chat(){
+    chat:function(){
       this.$router.push('/Chat')
     },
-    douBan(){
+    douBan:function(){
       this.$router.push('/Douban')
     }
   },
