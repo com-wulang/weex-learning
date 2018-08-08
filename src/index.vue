@@ -1,18 +1,20 @@
 <template>
   <div class="wrapper">
-    <image :src="logo" class="logo" />
-    <text class="greeting">The environment is ready!</text>
+    <image :src="logo" class="logo b" />
     <router-view/>
-    <div class="navigation">
-      <text class="il" to="/Hello" @click="hello">Hello</text>
-      <text class="il" to="/Chat" @click="chat">Chat</text>
-      <text class="il" to="/Hello" @click="hello">Hello</text>
-      <text class="il" to="/Chat" @click="chat">Chat</text>
+    <div class="navigation b">
+      <text class="il b" to="/Hello" @click="hello">Hello</text>
+      <text class="il b" to="/Chat" @click="chat">Chat</text>
+      <text class="il b" to="/Hello" @click="douBan">DouBan</text>
+      <text class="il b" to="/Chat" @click="chat">Chat</text>
     </div>
   </div>
 </template>
 
 <script>
+
+var websocket = weex.requireModule('webSocket');
+var count = 0;
 export default {
   methods:{
     hello(){
@@ -20,12 +22,16 @@ export default {
     },
     chat(){
       this.$router.push('/Chat')
+    },
+    douBan(){
+      this.$router.push('/Douban')
     }
   },
   name: 'App',
   data () {
     return {
-      logo: 'https://gw.alicdn.com/tfs/TB1yopEdgoQMeJjy1XaXXcSsFXa-640-302.png'
+      logo: 'https://gw.alicdn.com/tfs/TB1yopEdgoQMeJjy1XaXXcSsFXa-640-302.png',
+      onmessage:''
     }
   }
 }
@@ -37,8 +43,8 @@ export default {
     align-items: center;
   }
   .logo {
-    width: 424px;
-    height: 200px;
+    width: 85px;
+    height: 40px;
   }
   .greeting {
     text-align: center;
@@ -56,20 +62,22 @@ export default {
     flex-direction:row;
     display: flex;
     bottom:0px;
+  }
+  .b {
     border-width: 1px;
     border-color: red;
     border-bottom-style: solid;
-    
   }
   .il {
     display: inline;
     height: 100px;
     width:187.5px;
-    border-width: 1px;
-    border-color: red;
-    border-bottom-style: solid;
     font-size:32px;
     padding-top:30px;
     padding-left:50px;
+  }
+  .send {
+    height: 80px;
+    width:100px;
   }
 </style>
