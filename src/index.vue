@@ -4,13 +4,24 @@
     <text class="greeting">The environment is ready!</text>
     <router-view/>
     <div class="navigation">
-        <router-link class="il" to='/Chat'>Chat gv</router-link><router-link class="il" to='/Hello'>Hello</router-link>
+      <text class="il" to="/Hello" @click="hello">Hello</text>
+      <text class="il" to="/Chat" @click="chat">Chat</text>
+      <text class="il" to="/Hello" @click="hello">Hello</text>
+      <text class="il" to="/Chat" @click="chat">Chat</text>
     </div>
   </div>
 </template>
 
 <script>
 export default {
+  methods:{
+    hello(){
+      this.$router.push('/Hello')
+    },
+    chat(){
+      this.$router.push('/Chat')
+    }
+  },
   name: 'App',
   data () {
     return {
@@ -41,20 +52,24 @@ export default {
     color: #727272;
   }
   .navigation {
-    position: fixed;
+    position:fixed;
+    flex-direction:row;
     display: flex;
     bottom:0px;
-    height: 100px;
-    width: 200px;
     border-width: 1px;
     border-color: red;
     border-bottom-style: solid;
+    
   }
   .il {
     display: inline;
-    height: 10px;
+    height: 100px;
+    width:187.5px;
     border-width: 1px;
     border-color: red;
     border-bottom-style: solid;
+    font-size:32px;
+    padding-top:30px;
+    padding-left:50px;
   }
 </style>
