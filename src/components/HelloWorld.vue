@@ -1,5 +1,7 @@
 <template>
-  <text class="message">Hello......</text>
+  <div>
+    
+  </div>
 </template>
 <style scoped>
   .message {

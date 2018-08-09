@@ -1,6 +1,5 @@
 <template>
   <div class="wrapper">
-    <image :src="logo" class="logo b" />
     <router-view/>
     <div class="navigation b">
       <text class="il b" @click="hello">Hello</text>
@@ -36,7 +35,7 @@ export default {
 
 <style scoped>
   .wrapper {
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
   }
   .logo {
@@ -59,6 +58,7 @@ export default {
     flex-direction:row;
     display: flex;
     bottom:0px;
+    background-color:rgb(220, 20, 20);
   }
   .b {
     border-width: 1px;
