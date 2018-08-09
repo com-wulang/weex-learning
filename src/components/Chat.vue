@@ -2,6 +2,9 @@
   <scroller>
     <div class="group">
       <text class="count">{{getResult}}</text>
+      <a href="http://10.0.17.182:8080/HelloWorld.vue">
+        <text>Jump</text>
+      </a>
     </div>
     <div v-for="(v, i) in list" class="row" :key="i">
       <div v-for="(url, k) in v" class="item" :key="i*10+k">
