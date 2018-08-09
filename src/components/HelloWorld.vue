@@ -1,6 +1,6 @@
 <template>
   <div>
-    
+    <web style="width: 750px; height: 1200px" src="https://www.baidu.com"></web>
   </div>
 </template>
 <style scoped>

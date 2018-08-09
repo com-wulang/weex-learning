@@ -1,6 +1,8 @@
 <template>
   <scroller>
-    <image style="width:250px;height:400px" :src="url10"/>
+    <div class="group">
+      <text class="count">{{getResult}}</text>
+    </div>
     <div v-for="(v, i) in list" class="row" :key="i">
       <div v-for="(url, k) in v" class="item" :key="i*10+k">
         <div>
@@ -10,18 +12,7 @@
     </div>
   </scroller>
 </template>
-<style scoped>
-  .item{
-    flex:1;
-    justify-content: center;
-    align-items:center;
-    border-width:1;
-  }
-  .row{
-    flex-direction: row;
-    height:400px;
-  }
-</style>
+
 <script>
   var stream = weex.requireModule('stream');
   module.exports = {
@@ -43,7 +34,7 @@
           me.getResult = "request failed"+ret.status+ret.statusText;
         }else{
           console.log('get:'+ret);
-          me.getResult = "nothing"+ret.data.count;
+          me.getResult = "";
           let subjects = ret.data.subjects;
           let douBanArray=new Array();
           for(let i=0;i<parseInt(subjects.length/3);i++){
@@ -64,3 +55,27 @@
     }
   };
 </script>
+
+<style scoped>
+  .item{
+    flex:1;
+    justify-content: center;
+    align-items:center;
+    border-width:1;
+  }
+  .row{
+    flex-direction: row;
+    height:400px;
+  }
+  .group {
+
+  }
+  .title {
+    font-size: 45px;
+    color: #41B883;
+  }
+  .count {
+    color: #888888;
+  }
+</style>
+
