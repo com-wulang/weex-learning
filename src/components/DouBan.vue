@@ -1,87 +1,60 @@
 <template>
-  <scroller>
-    <div class="group">
-      <text class="title">method = GET</text>
-      <text class="count">{{getResult}}</text>
-      <text class="count">{{response}}</text>
-    </div>
-    <div v-for="(v, i) in list" class="row" :key="i">
-      <div v-for="(url, k) in v" class="item" :key="i*10+k">
-        <div>
-          <image style="width:250px;height:400px" :src="url"/>
-        </div>
-      </div>
-    </div>
-  </scroller>
+  <div>
+    <video class="video" src="http://www.w3school.com.cn/i/song.ogg" controls
+      @start="onstart" @pause="onpause" @finish="onfinish" @fail="onfail" :play-status="videoStatus"></video>
+    <text class="info">state: {{state}}</text>
+    <text class="info" @click="videoPlay">{{play}}</text>
+    <text></text>
+  </div>
 </template>
 
-<script>
-  var stream = weex.requireModule('stream');
-  module.exports = {
-    data: function () {
-      return {
-        getResult: 'loading...',
-      }
-    },
-    created: function() {
-      var me = this;
-      var GET_URL = 'http://api.douban.com/v2/movie/coming_soon';
-
-      stream.fetch({
-        method: 'GET',
-        url: GET_URL,
-        type:'json'
-      }, function(ret) {
-        if(!ret.ok){
-          me.getResult = "request failed"+ret.status+ret.statusText;
-        }else{
-          console.log('get:'+ret);
-          me.getResult = "nothing"+ret.data.count;
-          let subjects = ret.data.subjects;
-          let douBanArray=new Array();
-          for(let i=0;i<parseInt(subjects.length/3);i++){
-            let arrayTemp=new Array();
-            for(let j=0;j<3;j++){
-              arrayTemp[j]=subjects[i*3+j].images.small;
-              console.log(arrayTemp[j]);
-            }
-            douBanArray[i]=arrayTemp;
-          }
-          me.list=douBanArray;
-        }
-      },function(response){
-        console.log('get in progress:'+response.length);
-        me.response = "bytes received:"+response.length+"\n"+response.status+"\n"+response.statusText+"\n"+response.data;
-      });
-
-    }
-  };
-</script>
-
 <style scoped>
-  .item{
-    flex:1;
-    justify-content: center;
-    align-items:center;
-    border-width:1;
+  .video {
+    width: 630px;
+    height: 350px;
+    margin-top: 60px;
+    margin-left: 60px;
+    visibility:hidden;
   }
-  .row{
-    flex-direction: row;
-    height:400px;
-  }
-  .group {
-    margin-left:32px;
-    margin-right:32px;
-    margin-bottom:32px;
-  }
-  .title {
-    font-size: 45px;
-    color: #41B883;
-  }
-  .count {
-    margin-top:6px;
-    font-size: 28px;
-    color: #888888;
+  .info {
+    margin-top: 40px;
+    font-size: 40px;
+    text-align: center;
   }
 </style>
 
+<script>
+  export default {
+    data () {
+      return {
+        state: '----',
+        play:'播放',
+        videoStatus:'pause',
+        src:'http://flv2.bn.netease.com/videolib3/1611/01/XGqSL5981/SD/XGqSL5981-mobile.mp4'
+      }
+    },
+    methods:{
+      onstart (event) {
+        this.state = 'onstart'
+      },
+      onpause (event) {
+        this.state = 'onpause'
+      },
+      onfinish (event) {
+        this.state = 'onfinish'
+      },
+      onfail (event) {
+        this.state = 'onfinish'
+      },
+      videoPlay () {
+        if(this.play=='播放'){
+          this.play='暂停';
+          this.videoStatus='play';
+        }else{
+          this.play='播放';
+          this.videoStatus='pause';
+        }
+      }
+    }
+  }
+</script>
