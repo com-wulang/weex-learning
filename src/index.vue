@@ -4,7 +4,7 @@
     <div class="navigation b">
       <text class="il" @click="hello">百度</text>
       <text class="il" @click="chat">豆瓣</text>
-      <text class="il" @click="douBan">音乐</text>
+      <text class="il" @click="music">音乐</text>
       <text class="il" @click="jump">jump</text>
     </div>
   </div>
@@ -21,17 +21,14 @@ export default {
     chat: function() {
       this.$router.push("/Chat");
     },
-    douBan: function() {
-      this.$router.push("/Douban");
+    music: function() {
+      this.$router.push("/Music");
     },
-    jump(event) {
+    jump() {
       navigator.push(
         {
           url: "https://qywl2014.github.io/weex-js/js/test.js?id=26614407",
           animated: "true"
-        },
-        event => {
-          modal.toast({ message: "callback: " + event });
         }
       );
     }
