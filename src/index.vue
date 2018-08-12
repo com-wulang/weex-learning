@@ -2,10 +2,10 @@
   <div class="wrapper">
     <router-view/>
     <div class="navigation b">
-      <text class="il" @click="hello">dilidili</text>
-      <text class="il" @click="chat">豆瓣</text>
+      <text class="il" @click="hello">视频</text>
+      <text class="il" @click="chat">电影</text>
       <text class="il" @click="music">音乐</text>
-      <text class="il" @click="jump">jump</text>
+      <text class="il" @click="jump">游戏</text>
     </div>
   </div>
 </template>
@@ -25,12 +25,7 @@ export default {
       this.$router.push("/Music");
     },
     jump() {
-      navigator.push(
-        {
-          url: "https://qywl2014.github.io/weex-js/js/test.js?id=26614407",
-          animated: "true"
-        }
-      );
+      this.$router.push("/Douban");
     }
   },
   name: "App",

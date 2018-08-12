@@ -1,24 +1,19 @@
 <template>
-  <scroller>
-    <video class="video" src="http://www.w3school.com.cn/i/song.ogg" controls
-      @start="onstart" @pause="onpause" @finish="onfinish" @fail="onfail" :play-status="videoStatus"></video>
-    <text class="info">state: {{state}}</text>
-    <text class="info" @click="videoPlay">{{play}}</text>
-    <image style="width:400px;height:400px" src="local:///a"/>
-  </scroller>
+  <div class="wrapper">
+    <text class="info">敬请期待</text>
+  </div>
 </template>
 
 <style scoped>
-  .video {
-    width: 630px;
-    height: 350px;
-    margin-top: 60px;
-    margin-left: 60px;
+  .wrapper {
+    widows: 750px;
+    height: 1500px;
+    justify-content:center;
   }
   .info {
-    margin-top: 40px;
-    font-size: 40px;
-    text-align: center;
+    font-size: 100px;
+    font-family: cursive;
+    color: rgba(223, 25, 25, 0.959)
   }
 </style>
 
