@@ -1,11 +1,11 @@
 <template>
-  <div>
+  <scroller>
     <video class="video" src="http://www.w3school.com.cn/i/song.ogg" controls
       @start="onstart" @pause="onpause" @finish="onfinish" @fail="onfail" :play-status="videoStatus"></video>
     <text class="info">state: {{state}}</text>
     <text class="info" @click="videoPlay">{{play}}</text>
-    <text></text>
-  </div>
+    <image style="width:400px;height:400px" src="local:///a"/>
+  </scroller>
 </template>
 
 <style scoped>
@@ -14,7 +14,6 @@
     height: 350px;
     margin-top: 60px;
     margin-left: 60px;
-    visibility:hidden;
   }
   .info {
     margin-top: 40px;

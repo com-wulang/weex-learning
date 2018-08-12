@@ -2,14 +2,13 @@
   <scroller>
     <div class="group">
       <text class="count">{{getResult}}</text>
-      <a href="http://10.0.17.182:8080/HelloWorld.vue">
-        <text>Jump</text>
-      </a>
     </div>
     <div v-for="(v, i) in list" class="row" :key="i">
       <div v-for="(url, k) in v" class="item" :key="i*10+k">
         <div>
-          <image style="width:250px;height:400px" :src="url"/>
+          <a :href="url.movieId">
+            <image style="width:250px;height:400px" :src="url.imageSrc"/>
+          </a>
         </div>
       </div>
     </div>
@@ -43,7 +42,12 @@
           for(let i=0;i<parseInt(subjects.length/3);i++){
             let arrayTemp=new Array();
             for(let j=0;j<3;j++){
-              arrayTemp[j]=subjects[i*3+j].images.small;
+              let imageSrc=subjects[i*3+j].images.small;
+              let movieId=subjects[i*3+j].id;
+              arrayTemp[j]={
+                'imageSrc':imageSrc,
+                'movieId':'https://qywl2014.github.io/weex-js/js/test.js?id='+movieId
+              };
               console.log(arrayTemp[j]);
             }
             douBanArray[i]=arrayTemp;
@@ -69,9 +73,6 @@
   .row{
     flex-direction: row;
     height:400px;
-  }
-  .group {
-
   }
   .title {
     font-size: 45px;

@@ -2,78 +2,91 @@
   <div class="wrapper">
     <router-view/>
     <div class="navigation b">
-      <text class="il b" @click="hello">Hello</text>
-      <text class="il b" @click="chat">Chat</text>
-      <text class="il b" @click="douBan">DouBan</text>
-      <text class="il b" @click="chat">Chat</text>
+      <text class="il" @click="hello">百度</text>
+      <text class="il" @click="chat">豆瓣</text>
+      <text class="il" @click="douBan">音乐</text>
+      <text class="il" @click="jump">jump</text>
     </div>
   </div>
 </template>
 
 <script>
+var navigator = weex.requireModule("navigator");
+var modal = weex.requireModule("modal");
 export default {
-  methods:{
-    hello:function(){
-      this.$router.push('/Hello')
+  methods: {
+    hello: function() {
+      this.$router.push("/Hello");
     },
-    chat:function(){
-      this.$router.push('/Chat')
+    chat: function() {
+      this.$router.push("/Chat");
     },
-    douBan:function(){
-      this.$router.push('/Douban')
+    douBan: function() {
+      this.$router.push("/Douban");
+    },
+    jump(event) {
+      navigator.push(
+        {
+          url: "https://qywl2014.github.io/weex-js/js/test.js?id=26614407",
+          animated: "true"
+        },
+        event => {
+          modal.toast({ message: "callback: " + event });
+        }
+      );
     }
   },
-  name: 'App',
-  data () {
+  name: "App",
+  data() {
     return {
-      logo: 'https://gw.alicdn.com/tfs/TB1yopEdgoQMeJjy1XaXXcSsFXa-640-302.png',
-      onmessage:''
-    }
+      logo: "https://gw.alicdn.com/tfs/TB1yopEdgoQMeJjy1XaXXcSsFXa-640-302.png",
+      onmessage: ""
+    };
   }
-}
+};
 </script>
 
 <style scoped>
-  .wrapper {
-    justify-content: flex-start;
-    align-items: center;
-  }
-  .logo {
-    width: 85px;
-    height: 40px;
-  }
-  .greeting {
-    text-align: center;
-    margin-top: 70px;
-    font-size: 50px;
-    color: #41B883;
-  }
-  .message {
-    margin: 30px;
-    font-size: 32px;
-    color: #727272;
-  }
-  .navigation {
-    position:fixed;
-    flex-direction:row;
-    display: flex;
-    bottom:0px;
-    background-color:rgb(220, 20, 20);
-  }
-  .b {
-    border-width: 1px;
-    border-color: red;
-    border-bottom-style: solid;
-  }
-  .il {
-    height: 100px;
-    width:187.5px;
-    font-size:32px;
-    padding-top:30px;
-    padding-left:50px;
-  }
-  .send {
-    height: 80px;
-    width:100px;
-  }
+.wrapper {
+  justify-content: flex-start;
+  align-items: center;
+}
+.logo {
+  width: 85px;
+  height: 40px;
+}
+.greeting {
+  text-align: center;
+  margin-top: 70px;
+  font-size: 50px;
+  color: #41b883;
+}
+.message {
+  margin: 30px;
+  font-size: 32px;
+  color: #727272;
+}
+.navigation {
+  position: fixed;
+  flex-direction: row;
+  display: flex;
+  bottom: 0px;
+  background-color: rgb(220, 20, 20);
+}
+.b {
+  border-width: 1px;
+  border-color: red;
+  border-bottom-style: solid;
+}
+.il {
+  height: 100px;
+  width: 187.5px;
+  font-size: 32px;
+  padding-top: 30px;
+  padding-left: 50px;
+}
+.send {
+  height: 80px;
+  width: 100px;
+}
 </style>
