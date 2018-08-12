@@ -3,7 +3,7 @@
     <div class="navi">
       <text class="forwardBack" @click="back">&#xe600;</text>
     </div>
-    <web ref="webview" style="width: 750px; height: 1300px" src="https://music.163.com" @pagestart="onPageStart" @pagefinish="onPageFinish" @error="onError" @receivedtitle="onReceivedTitle"></web>
+    <web ref="webview" style="width: 750px; height: 1420px" src="https://music.163.com" @pagestart="onPageStart" @pagefinish="onPageFinish" @error="onError" @receivedtitle="onReceivedTitle"></web>
   </div>
 </template>
 <script>
@@ -62,7 +62,7 @@ export default {
 <style scoped>
 .b {
     border-width: 1px;
-    border-color: red;
+    border-color: rgb(2, 0, 8);
     border-bottom-style: solid;
   }
 .forwardBack {
@@ -78,11 +78,9 @@ export default {
   color: #727272;
 }
 .navi {
-  height: 100;
+  height: 100px;
   flex-direction: row;
-  border-bottom-style: solid;
-  border-bottom-width: 1px;
-  border-bottom-color:rgb(190, 182, 182);
+  background-color: rgb(212, 60, 51);
   width: 750px;
 }
 </style>

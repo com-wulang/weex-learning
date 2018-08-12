@@ -2,7 +2,7 @@
   <div class="wrapper">
     <router-view/>
     <div class="navigation b">
-      <text class="il" @click="hello">百度</text>
+      <text class="il" @click="hello">dilidili</text>
       <text class="il" @click="chat">豆瓣</text>
       <text class="il" @click="music">音乐</text>
       <text class="il" @click="jump">jump</text>
@@ -69,6 +69,13 @@ export default {
   display: flex;
   bottom: 0px;
   background-color: rgb(220, 20, 20);
+}
+.head {
+  height: 50px;
+  width: 750px;
+  flex-direction: row;
+  top: 0px;
+  background-color: rgb(212, 60, 51);
 }
 .b {
   border-width: 1px;
